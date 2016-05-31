@@ -22,7 +22,8 @@ class BoardPreviewComponent {
   @Output()
   update: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   setPriority(input) {
     this.board['.priority'] = input.value;
@@ -77,6 +78,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription !== undefined)
+      this.subscription.unsubscribe();
   }
 }
