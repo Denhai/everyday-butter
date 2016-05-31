@@ -1,0 +1,9 @@
+<div *ngIf="(af.auth | async)">
+    <p>{{ (af.auth | async).google.displayName }} </p>
+    <button (click)="logout()">Logout</button>
+</div>
+<div *ngIf="!(af.auth | async)">
+
+</div>
+<a [routerLink]="['Home']">Home</a>
+<a [routerLink]="['About']">About</a>

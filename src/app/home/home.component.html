@@ -1,3 +1,10 @@
-<p>
-  Home Works!
-</p>
+<h1 authenticated>Boards</h1>
+
+<div *ngFor="let board of boards">
+  <board-preview [board]="board" (update)="update($event)"></board-preview>
+</div>
+
+<br>
+<form (submit)="addBoard(boardTitle)">
+  <input #boardTitle type="text" placeholder="Board title">
+</form>
