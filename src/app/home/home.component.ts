@@ -31,7 +31,6 @@ class BoardPreviewComponent {
   }
 }
 
-
 @Component({
   selector: 'my-home',
   template: require('./home.component.html'),

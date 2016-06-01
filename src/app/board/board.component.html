@@ -1,18 +1,14 @@
 <h1 authenticated>Board title: {{ (board | async)?.title }}</h1>
 
-<ul>
-  <li *ngFor="let list of lists | async">
-    List: {{list|json}}
-    <ul>
-      <li *ngFor="let task of tasks | async | inList:list.$key">
-        Task: {{task|json}}
-      </li>
-      <li>
-        <form (submit)="addTask(list.$key, input)"><input #input type="text" placeholder="add task"></form>
+<ul [dragula]="'listBag'">
+  <li class="list" *ngFor="let list of lists | async; let column = index">
+    <span class="handle">⬍</span> List: {{list | json}}
+    <ul [dragula]="'taskBag'" [attr.data-key]="list.$key">
+      <li class="task" *ngFor="let task of tasks | async | inList:list.$key; let row = index" [attr.data-key]="task.$key">
+        Task: {{task | json}}
       </li>
     </ul>
-  </li>
-  <li>
-    <form (submit)="addList(input)"><input #input type="text" placeholder="add list"></form>
+    <ul><li class="invalid"><form (submit)="addTask(list.$key, input)"><input #input type="text" placeholder="add task"></form></li></ul>
   </li>
 </ul>
+<ul><li><form (submit)="addList(input)"><input #input type="text" placeholder="add list"></form></li></ul>

@@ -1,0 +1,14 @@
+ul {
+    // Needs to have a minimum size so that elements can be dragged to it when it is empty.
+    min-height: 1em;
+}
+
+span.handle {
+    background: yellow;
+    padding: 5px;
+    cursor: move;
+}
+
+li.task {
+    cursor: move;
+}

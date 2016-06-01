@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TaskInListPipe implements PipeTransform {
   transform(tasks: any[], parentListKey: string) {
-    return tasks.filter(task => {
+    return tasks == null ? null : tasks.filter(task => {
       return task.list === parentListKey;
     });
   }
